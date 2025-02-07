@@ -1,0 +1,23 @@
+﻿  pch.cpp
+  AssemblyInfo.cpp
+  Board.cpp
+  Computer.cpp
+  CppCLR_WinFormsProject.cpp
+  Double.cpp
+C:\Users\emilk\Desktop\Informatyka\statki_gui2\CppCLR_WinFormsProject.cpp(11,53): error C2512: "CppCLRWinFormsProject::Form1::Form1": niedostępny odpowiedni konstruktor domyślny
+  (kompilowanie pliku źródłowego „/CppCLR_WinFormsProject.cpp”)
+  C:\Users\emilk\Desktop\Informatyka\statki_gui2\CppCLR_WinFormsProject.cpp(11,53):
+  podczas próby dopasowania listy argumentów "()"
+  
+  Form1.cpp
+  GameForm.cpp
+  GraczForm.cpp
+  Person.cpp
+  PlayerData.cpp
+  Quadruple.cpp
+  Ship.cpp
+  Single.cpp
+  Triple.cpp
+  Wyniki.cpp
+  Zasady.cpp
+  Generowanie kodu...
