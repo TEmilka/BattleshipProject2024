@@ -8,12 +8,6 @@ public:
 	~Single();
 
 	int getSize();
-	/**
-	 * @brief - ustawianie coordow statku
-	 * @param row 
-	 * @param col 
-	 * @param p - poziomo/pionnowo
-	*/
 	void setCoordinatesP(int row, int col, int p);
 	std::string getType();
 
@@ -21,8 +15,8 @@ public:
 	int getY(int index);
 	int gethitCount();
 
-	bool getZatopiony();
-	void setZatopiony();
+	bool getSunk();
+	void setSunk();
 	bool isSunk();
 	bool hit(int row, int col);
 };

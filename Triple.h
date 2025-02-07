@@ -8,12 +8,6 @@ public:
 	~Triple();
 
 	int getSize();
-	/**
-	 * @brief - ustawia coordy statku
-	 * @param row 
-	 * @param col 
-	 * @param p - pion/poziom
-	*/
 	void setCoordinatesP(int row, int col, int p);
 	std::string getType();
 
@@ -23,8 +17,8 @@ public:
 
 	int gethitCount();
 
-	bool getZatopiony();
-	void setZatopiony();
+	bool getSunk();
+	void setSunk();
 	bool isSunk();
 	bool hit(int row, int col);
 };

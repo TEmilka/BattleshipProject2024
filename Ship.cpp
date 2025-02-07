@@ -6,7 +6,7 @@ using namespace std;
 
 Ship::Ship(int size)
 {
-	zatopiony = false;
+	sunk = false;
 	hitCount = 0;
 	this->size = size;
 	coordinates = new pair<int, int>[size];
@@ -35,14 +35,14 @@ int Ship::getY(int index)
 	return 0;
 }
 
-void Ship::setZatopiony()
+void Ship::setSunk()
 {
 
 }
 
-bool Ship::getZatopiony()
+bool Ship::getSunk()
 {
-	return zatopiony;
+	return sunk;
 }
 
 int Ship::gethitCount()
@@ -52,7 +52,7 @@ int Ship::gethitCount()
 
 string Ship::getType()
 {
-	return "Statek!";
+	return "Ship!";
 }
 
 bool Ship::isSunk()

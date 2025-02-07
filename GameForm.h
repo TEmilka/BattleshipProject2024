@@ -2,19 +2,18 @@
 #include "Board.h"
 #include "PlayerData.h"
 
-//using namespace std;
 using namespace System::Windows::Forms;
 
 ref class GameForm : public Form
 {
 private:
 
-    double wynik;
+    double score;
     Board* computer;
-    Board* czlowiek;
-    PlayerData<int>* graczInt;
-    PlayerData<double>* graczDouble;
-    bool graRozpoczeta;
+    Board* person;
+    PlayerData<int>* playerInt;
+    PlayerData<double>* playerDouble;
+    bool gameStarted;
     int x;
     int y;
 
@@ -23,21 +22,21 @@ public:
     GameForm();
     ~GameForm();
 
-    void setWynik(double value);
-    double getWynik();
+    void setScore(double value);
+    double getScore();
     char getTabComputer(int row, int col);
     char getTabPerson(int row, int col);
     void setComputerShip();
     void setPersonShip();
 
-    bool ComputerStrzal(int row, int col);
-    bool PersonStrzal(int row, int col);
+    bool ComputerShot(int row, int col);
+    bool PersonShot(int row, int col);
 
-    bool ComputerZatopienie();
-    bool PersonZatopienie();
+    bool ComputerFlooding();
+    bool PersonFlooding();
 
-    void setGraRozpoczeta();
-    bool getGraRozpoczeta();
+    void setGameStarted();
+    bool getGameStarted();
 
     bool getComputerLoose();
     bool getPersonLoose();

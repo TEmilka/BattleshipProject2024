@@ -8,8 +8,6 @@
 #include <time.h> 
 #include <random>
 
-
-//using namespace std;
 using namespace System::Windows::Forms;
 
 Computer::Computer() : Board()
@@ -54,7 +52,7 @@ bool Computer::checkCoordinates(int row, int col, int p, Ship& shipp)
     return true;
 }
 
-bool Computer::strzal(int row, int col)
+bool Computer::shot(int row, int col)
 {
     for (Ship* ship : ships) {
         if (tab[row][col] == 'T' || tab[row][col] == 'X') {
@@ -75,16 +73,16 @@ bool Computer::strzal(int row, int col)
     return false;
 }
 
-bool Computer::zatopienie()
+bool Computer::flooding()
 {
-    bool zwroc = false;
+    bool result = false;
 
     for (Ship* ship : ships) {
 
-        if (!ship->getZatopiony()) {
+        if (!ship->getSunk()) {
             if (ship->isSunk()) {
-                ship->setZatopiony();
-                zwroc = true;
+                ship->setSunk();
+                result = true;
                 for (int i = 0; i < ship->getSize(); i++) {
                     tab[ship->getX(i)][ship->getY(i)] = 'X';
 
@@ -92,7 +90,7 @@ bool Computer::zatopienie()
             }
         }
     }
-    return zwroc;
+    return result;
 }
 
 bool Computer::isLoose()
@@ -153,7 +151,7 @@ void Computer::setTab(int row, int col, char value)
         tab[row][col] = value;
     }
     else {
-        //Nic nie rob
+        //Nth
     }
 }
 

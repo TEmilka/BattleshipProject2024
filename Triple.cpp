@@ -40,7 +40,7 @@ void Triple::setCoordinatesP(int row, int col, int p)
 
 string Triple::getType()
 {
-	return "Trzymasztowiec";
+	return "Three-masted ship.";
 }
 
 int Triple::getX(int index)
@@ -58,14 +58,14 @@ int Triple::gethitCount()
 	return hitCount;
 }
 
-bool Triple::getZatopiony()
+bool Triple::getSunk()
 {
-	return zatopiony;
+	return sunk;
 }
 
-void Triple::setZatopiony()
+void Triple::setSunk()
 {
-	zatopiony = true;
+	sunk = true;
 }
 
 bool Triple::isSunk()
@@ -78,10 +78,10 @@ bool Triple::hit(int row, int col)
 	for (int i = 0; i < size; i++) {
 		if (coordinates[i].first == row && coordinates[i].second == col) {
 			++hitCount;
-			return true; // Trafiony
+			return true;
 		}
 	}
 
-	return false;  // Nie trafiony
+	return false;
 }
 

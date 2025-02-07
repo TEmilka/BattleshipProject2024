@@ -16,8 +16,8 @@ public:
 
 	int gethitCount();
 
-	bool getZatopiony();
-	void setZatopiony();
+	bool getSunk();
+	void setSunk();
 	bool isSunk();
 	bool hit(int row, int col);
 };

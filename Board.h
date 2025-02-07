@@ -1,18 +1,12 @@
 #pragma once
 #include "Ship.h"
 #include <vector>
-//using namespace std;
-
 
 class Board
 {
 protected:
-
-
 	char tab[10][10];
 	std::vector<Ship*> ships;
-
-
 public:
 	Board();
 	virtual ~Board();
@@ -21,14 +15,14 @@ public:
 	virtual void setTab(int row, int col, char value);
 	virtual bool checkCoordinates(int row, int col, int p, Ship& shipp);
 	/**
-	 * @brief - sprawdzenie poprawnosci strzalu
+	 * @brief - checking the correctness of the shot
 	 * @param row 
 	 * @param col 
 	 * @return 
 	*/
-	virtual bool strzal(int row, int col);
+	virtual bool shot(int row, int col);
 
-	virtual bool zatopienie();
+	virtual bool flooding();
 	virtual bool isLoose();
 
 	virtual void placeShips();

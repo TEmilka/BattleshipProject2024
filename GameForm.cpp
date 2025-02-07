@@ -8,29 +8,29 @@
 GameForm::GameForm()
 {
     computer = new Computer();
-    czlowiek = new Person();
-    graczInt = new PlayerData<int>();
-    graczDouble = new PlayerData<double>();
-    wynik = 0;
-    graRozpoczeta = false;
+    person = new Person();
+    playerInt = new PlayerData<int>();
+    playerDouble = new PlayerData<double>();
+    score = 0;
+    gameStarted = false;
 }
 
 GameForm::~GameForm()
 {
     delete computer;
-    delete czlowiek;
-    delete graczInt;
-    delete graczDouble;
+    delete person;
+    delete playerInt;
+    delete playerDouble;
 }
 
-void GameForm::setWynik(double value)
+void GameForm::setScore(double value)
 {
-    wynik += value;
+    score += value;
 }
 
-double GameForm::getWynik()
+double GameForm::getScore()
 {
-    return wynik;
+    return score;
 }
 
 char GameForm::getTabComputer(int row, int col)
@@ -40,7 +40,7 @@ char GameForm::getTabComputer(int row, int col)
 
 char GameForm::getTabPerson(int row, int col)
 {
-    return czlowiek->getTab(row,col);
+    return person->getTab(row,col);
 }
 
 void GameForm::setComputerShip()
@@ -50,37 +50,37 @@ void GameForm::setComputerShip()
 
 void GameForm::setPersonShip()
 {
-    czlowiek->placeShips();
+    person->placeShips();
 }
 
-bool GameForm::ComputerStrzal(int row, int col)
+bool GameForm::ComputerShot(int row, int col)
 {
-   return computer->strzal(row,col);
+   return computer->shot(row,col);
 }
 
-bool GameForm::PersonStrzal(int row, int col)
+bool GameForm::PersonShot(int row, int col)
 {
-    return czlowiek->strzal(row,col);
+    return person->shot(row,col);
 }
 
-bool GameForm::ComputerZatopienie()
+bool GameForm::ComputerFlooding()
 {
-    return computer->zatopienie();
+    return computer->flooding();
 }
 
-bool GameForm::PersonZatopienie()
+bool GameForm::PersonFlooding()
 {
-  return czlowiek->zatopienie();
+  return person->flooding();
 }
 
-void GameForm::setGraRozpoczeta()
+void GameForm::setGameStarted()
 {
-    graRozpoczeta = true;
+    gameStarted = true;
 }
 
-bool GameForm::getGraRozpoczeta()
+bool GameForm::getGameStarted()
 {
-    return graRozpoczeta;
+    return gameStarted;
 }
 
 bool GameForm::getComputerLoose()
@@ -90,7 +90,7 @@ bool GameForm::getComputerLoose()
 
 bool GameForm::getPersonLoose()
 {
-    return czlowiek->isLoose();
+    return person->isLoose();
 }
 
 

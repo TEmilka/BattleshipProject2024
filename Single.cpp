@@ -25,7 +25,7 @@ void Single::setCoordinatesP(int row, int col, int p)
 
 string Single::getType()
 {
-	return "Jednomasztowiec";
+	return "Single-masted ship.";
 }
 
 int Single::getX(int index)
@@ -43,14 +43,14 @@ int Single::gethitCount()
 	return hitCount;
 }
 
-bool Single::getZatopiony()
+bool Single::getSunk()
 {
-	return zatopiony;
+	return sunk;
 }
 
-void Single::setZatopiony()
+void Single::setSunk()
 {
-	zatopiony = true;
+	sunk = true;
 
 }
 
@@ -64,7 +64,7 @@ bool Single::hit(int row, int col)
 	for (int i = 0; i < size; i++) {
 		if (coordinates[i].first == row && coordinates[i].second == col) {
 			++hitCount;
-			return true; // Zwraca true gdy trafimy statek!
+			return true;
 		}
 	}
 	return false;

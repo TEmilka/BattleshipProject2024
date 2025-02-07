@@ -41,7 +41,7 @@ void Double::setCoordinatesP(int row, int col, int p)
 
 string Double::getType()
 {
-	return "Dwumasztowiec";
+	return "Two-masted ship";
 }
 
 int Double::getX(int index)
@@ -59,14 +59,14 @@ int Double::gethitCount()
 	return hitCount;
 }
 
-bool Double::getZatopiony()
+bool Double::getSunk()
 {
-	return zatopiony;
+	return sunk;
 }
 
-void Double::setZatopiony()
+void Double::setSunk()
 {
-	zatopiony = true;
+	sunk = true;
 }
 
 bool Double::isSunk()
@@ -79,7 +79,7 @@ bool Double::hit(int row, int col)
 	for (int i = 0; i < size; i++) {
 		if (coordinates[i].first == row && coordinates[i].second == col) {
 			++hitCount;
-			return true; // Trafiony
+			return true;
 		}
 	}
 

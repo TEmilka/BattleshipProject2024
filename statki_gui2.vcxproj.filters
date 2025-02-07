@@ -20,16 +20,13 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Form1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Zasady.h">
+    <ClInclude Include="Rules.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlayerData.h">
@@ -62,30 +59,21 @@
     <ClInclude Include="GameForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GraczForm.h">
+    <ClInclude Include="PlayerForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Wyniki.h">
+    <ClInclude Include="Scores.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CppCLR_WinFormsProject.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AssemblyInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Form1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Zasady.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Ship.cpp">
@@ -115,10 +103,7 @@
     <ClCompile Include="GameForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GraczForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Wyniki.cpp">
+    <ClCompile Include="PlayerForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

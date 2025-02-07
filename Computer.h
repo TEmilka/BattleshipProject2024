@@ -1,8 +1,5 @@
 #pragma once
 #include "Board.h"
-
-
-
     class Computer :
         public Board
     {
@@ -11,8 +8,8 @@
         ~Computer();
 
         bool checkCoordinates(int row, int col, int p, Ship& shipp);
-        bool strzal(int row, int col);
-        bool zatopienie();
+        bool shot(int row, int col);
+        bool flooding();
         bool isLoose();
         void placeShips();
         void setTab(int row, int col, char value);

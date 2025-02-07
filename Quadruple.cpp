@@ -40,7 +40,7 @@ void Quadruple::setCoordinatesP(int row, int col, int p)
 
 string Quadruple::getType()
 {
-	return "Czteromasztowiec!";
+	return "Four-masted ship!";
 }
 
 int Quadruple::getX(int index)
@@ -58,14 +58,14 @@ int Quadruple::gethitCount()
 	return hitCount;
 }
 
-bool Quadruple::getZatopiony()
+bool Quadruple::getSunk()
 {
-	return zatopiony;
+	return sunk;
 }
 
-void Quadruple::setZatopiony()
+void Quadruple::setSunk()
 {
-	zatopiony = true;
+	sunk = true;
 }
 
 bool Quadruple::isSunk()
@@ -78,7 +78,7 @@ bool Quadruple::hit(int row, int col)
 	for (int i = 0; i < size; i++) {
 		if (coordinates[i].first == row && coordinates[i].second == col) {
 			++hitCount;
-			return true; // Trafiony
+			return true;
 		}
 	}
 

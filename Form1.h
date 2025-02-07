@@ -1,5 +1,5 @@
 #pragma once
-#include "Zasady.h"
+#include "Rules.h"
 #include "PlayerData.h"
 #include "Computer.h"
 #include "GameForm.h"
@@ -7,7 +7,7 @@
 #include <cstdlib>   
 #include <ctime>     
 #include <random>
-#include "Wyniki.h"
+#include "Scores.h"
 
 using namespace statki_gui2;
 
@@ -27,8 +27,8 @@ namespace CppCLRWinFormsProject {
 		Form1(array<System::String^>^ args)
 		{
 			InitializeComponent();
-			if (gra == nullptr) {
-				gra = gcnew GameForm();
+			if (game == nullptr) {
+				game = gcnew GameForm();
 			}
 			commandLineArgs = args;
 
@@ -39,22 +39,17 @@ namespace CppCLRWinFormsProject {
 			}
 
 
-			gra->setComputerShip();
-			gra->setPersonShip();
-			//
-			//TODO: Add the constructor code here
-			//
+			game->setComputerShip();
+			game->setPersonShip();
+
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
 		~Form1()
 		{
 			if (components)
 			{
-				delete gra;
+				delete game;
 				delete components;
 			}
 		}
@@ -62,15 +57,15 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Panel^ Computer;
 	private: System::Windows::Forms::Panel^ Person;
 	private: System::Windows::Forms::Label^ start;
-	private: System::Windows::Forms::Button^ zasady_button;
+	private: System::Windows::Forms::Button^ rules_button;
 	private: System::Windows::Forms::Button^ start_button;
 
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
-	private:GameForm^ gra = nullptr;
+	private:GameForm^ game = nullptr;
 	private: System::Windows::Forms::TextBox^ x;
 	private: System::Windows::Forms::TextBox^ y;
-	private: System::Windows::Forms::Button^ strzal;
+	private: System::Windows::Forms::Button^ shot;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
@@ -83,30 +78,23 @@ namespace CppCLRWinFormsProject {
 
 
 	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
 		System::ComponentModel::Container^ components;
 	private:
 		array<System::String^>^ commandLineArgs;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
 		void InitializeComponent(void)
 		{
 			this->Computer = (gcnew System::Windows::Forms::Panel());
 			this->Person = (gcnew System::Windows::Forms::Panel());
 			this->start = (gcnew System::Windows::Forms::Label());
-			this->zasady_button = (gcnew System::Windows::Forms::Button());
+			this->rules_button = (gcnew System::Windows::Forms::Button());
 			this->start_button = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->x = (gcnew System::Windows::Forms::TextBox());
 			this->y = (gcnew System::Windows::Forms::TextBox());
-			this->strzal = (gcnew System::Windows::Forms::Button());
+			this->shot = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
@@ -139,21 +127,20 @@ namespace CppCLRWinFormsProject {
 			this->start->Name = L"start";
 			this->start->Size = System::Drawing::Size(333, 88);
 			this->start->TabIndex = 2;
-			this->start->Text = L"========GRA W STATKI=======\r\n\r\nAby otworzyæ zasady gry kliknij ZASADY\r\nAby zacz¹æ"
-				L" rozgrywkê kliknij START";
+			this->start->Text = L"BATTLESHIP\r\n\r\nTo open the game rules, click RULES\r\nTo start game, click START";
 			// 
-			// zasady_button
+			// rules_button
 			// 
-			this->zasady_button->BackColor = System::Drawing::SystemColors::HotTrack;
-			this->zasady_button->Font = (gcnew System::Drawing::Font(L"MS Reference Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->rules_button->BackColor = System::Drawing::SystemColors::HotTrack;
+			this->rules_button->Font = (gcnew System::Drawing::Font(L"MS Reference Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->zasady_button->Location = System::Drawing::Point(147, 92);
-			this->zasady_button->Name = L"zasady_button";
-			this->zasady_button->Size = System::Drawing::Size(120, 50);
-			this->zasady_button->TabIndex = 3;
-			this->zasady_button->Text = L"ZASADY";
-			this->zasady_button->UseVisualStyleBackColor = false;
-			this->zasady_button->Click += gcnew System::EventHandler(this, &Form1::zasady_button_Click);
+			this->rules_button->Location = System::Drawing::Point(147, 92);
+			this->rules_button->Name = L"rules_button";
+			this->rules_button->Size = System::Drawing::Size(120, 50);
+			this->rules_button->TabIndex = 3;
+			this->rules_button->Text = L"RULES";
+			this->rules_button->UseVisualStyleBackColor = false;
+			this->rules_button->Click += gcnew System::EventHandler(this, &Form1::rules_button_Click);
 			// 
 			// start_button
 			// 
@@ -177,7 +164,7 @@ namespace CppCLRWinFormsProject {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(156, 19);
 			this->label1->TabIndex = 6;
-			this->label1->Text = L"TWOJA PLANSZA";
+			this->label1->Text = L"YOUR BOARD";
 			this->label1->Visible = false;
 			// 
 			// label2
@@ -189,7 +176,7 @@ namespace CppCLRWinFormsProject {
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(207, 19);
 			this->label2->TabIndex = 7;
-			this->label2->Text = L"PLANSZA KOMPUTERA";
+			this->label2->Text = L"COMPUTER BOARD";
 			this->label2->Visible = false;
 			// 
 			// x
@@ -212,16 +199,16 @@ namespace CppCLRWinFormsProject {
 			this->y->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->y->Visible = false;
 			// 
-			// strzal
+			// shot
 			// 
-			this->strzal->Location = System::Drawing::Point(444, 182);
-			this->strzal->Name = L"strzal";
-			this->strzal->Size = System::Drawing::Size(75, 23);
-			this->strzal->TabIndex = 10;
-			this->strzal->Text = L"STRZEL";
-			this->strzal->UseVisualStyleBackColor = true;
-			this->strzal->Visible = false;
-			this->strzal->Click += gcnew System::EventHandler(this, &Form1::strzal_Click);
+			this->shot->Location = System::Drawing::Point(444, 182);
+			this->shot->Name = L"shot";
+			this->shot->Size = System::Drawing::Size(75, 23);
+			this->shot->TabIndex = 10;
+			this->shot->Text = L"SHOOT";
+			this->shot->UseVisualStyleBackColor = true;
+			this->shot->Visible = false;
+			this->shot->Click += gcnew System::EventHandler(this, &Form1::shot_Click);
 			// 
 			// label3
 			// 
@@ -278,7 +265,7 @@ namespace CppCLRWinFormsProject {
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(274, 31);
 			this->label7->TabIndex = 15;
-			this->label7->Text = L"PORA NA STRZALY!";
+			this->label7->Text = L"TIME FOR THE SHOTS!";
 			this->label7->Visible = false;
 			// 
 			// Form1
@@ -293,18 +280,18 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->strzal);
+			this->Controls->Add(this->shot);
 			this->Controls->Add(this->y);
 			this->Controls->Add(this->x);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->start_button);
-			this->Controls->Add(this->zasady_button);
+			this->Controls->Add(this->rules_button);
 			this->Controls->Add(this->start);
 			this->Controls->Add(this->Person);
 			this->Controls->Add(this->Computer);
 			this->Name = L"Form1";
-			this->Text = L"GRA W STATKI";
+			this->Text = L"BATTLESHIP";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -312,44 +299,37 @@ namespace CppCLRWinFormsProject {
 #pragma endregion
 	private: System::Void Computer_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
 	{
-		if (gra->getGraRozpoczeta()) {
+		if (game->getGameStarted()) {
 
 			Graphics^ g = e->Graphics;
 
-			// Rozmiar planszy
 			int boardSize = 10;
 			int cellSize = 30;
-
-			// Pêtle do rysowania siatki planszy
 			for (int i = 0; i < boardSize; i++)
 			{
 				for (int j = 0; j < boardSize; j++)
 				{
-					// Oblicz pozycjê ka¿dej komórki
 					int x = i * cellSize;
 					int y = j * cellSize;
 
-					// Rysuj obramowanie komórki
 					g->DrawRectangle(Pens::Black, x, y, cellSize, cellSize);
 
-					// SprawdŸ wartoœæ w tablicy i ustaw odpowiedni kolor
-					if (gra->getTabComputer(i, j) == 'O')
+					if (game->getTabComputer(i, j) == 'O')
 					{
 						SolidBrush^ brush = gcnew SolidBrush(Color::Blue); 
 						g->FillRectangle(brush, x, y, cellSize, cellSize);
 					}
-					// Dodaj inne warunki dla innych wartoœci, jeœli s¹ potrzebne
-					else if (gra->getTabComputer(i, j) == 'T')
+					else if (game->getTabComputer(i, j) == 'T')
 					{
 						SolidBrush^ brush = gcnew SolidBrush(Color::Orange); 
 						g->FillRectangle(brush, x, y, cellSize, cellSize);
 					}
-					else if (gra->getTabComputer(i, j) == 'X')
+					else if (game->getTabComputer(i, j) == 'X')
 					{
 						SolidBrush^ brush = gcnew SolidBrush(Color::Red); 
 						g->FillRectangle(brush, x, y, cellSize, cellSize);
 					}
-					else if (gra->getTabComputer(i, j) == 'P')
+					else if (game->getTabComputer(i, j) == 'P')
 					{
 						SolidBrush^ brush = gcnew SolidBrush(Color::Gray); 
 						g->FillRectangle(brush, x, y, cellSize, cellSize);
@@ -362,44 +342,39 @@ namespace CppCLRWinFormsProject {
 
 private: System::Void Person_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
 {
-	if (gra->getGraRozpoczeta()) {
+	if (game->getGameStarted()) {
 
 		Graphics^ g = e->Graphics;
 
-		// Rozmiar planszy
 		int boardSize = 10;
 		int cellSize = 30;
 
-		// Pêtle do rysowania siatki planszy
+
 		for (int i = 0; i < boardSize; i++)
 		{
 			for (int j = 0; j < boardSize; j++)
 			{
-				// Oblicz pozycjê ka¿dej komórki
 				int x = i * cellSize;
 				int y = j * cellSize;
 
-				// Rysuj obramowanie komórki
 				g->DrawRectangle(Pens::Black, x, y, cellSize, cellSize);
 
-				// SprawdŸ wartoœæ w tablicy i ustaw odpowiedni kolor
-				if (gra->getTabPerson(i, j) == 'O')
+				if (game->getTabPerson(i, j) == 'O')
 				{
 					SolidBrush^ brush = gcnew SolidBrush(Color::Blue);
 					g->FillRectangle(brush, x, y, cellSize, cellSize);
 				}
-				// Dodaj inne warunki dla innych wartoœci, jeœli s¹ potrzebne
-				else if (gra->getTabPerson(i, j) == 'T')
+				else if (game->getTabPerson(i, j) == 'T')
 				{
 					SolidBrush^ brush = gcnew SolidBrush(Color::Orange);
 					g->FillRectangle(brush, x, y, cellSize, cellSize);
 				}
-				else if (gra->getTabPerson(i, j) == 'X')
+				else if (game->getTabPerson(i, j) == 'X')
 				{
 					SolidBrush^ brush = gcnew SolidBrush(Color::Red);
 					g->FillRectangle(brush, x, y, cellSize, cellSize);
 				}
-				else if (gra->getTabPerson(i, j) == 'P')
+				else if (game->getTabPerson(i, j) == 'P')
 				{
 					SolidBrush^ brush = gcnew SolidBrush(Color::Gray);
 					g->FillRectangle(brush, x, y, cellSize, cellSize);
@@ -412,8 +387,7 @@ private: System::Void Person_Paint(System::Object^ sender, System::Windows::Form
 
 private: System::Void start_button_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	// Ukryj etykiety i przyciski
-	zasady_button->Visible = false;
+	rules_button->Visible = false;
 	start_button->Visible = false;
 	start->Visible = false;
 
@@ -422,55 +396,51 @@ private: System::Void start_button_Click(System::Object^ sender, System::EventAr
 	label2->Visible = true;
 	x->Visible = true;
 	y->Visible = true;
-	strzal->Visible = true;
+	shot->Visible = true;
 	label3->Visible = true;
 	label4->Visible = true;
 	label5->Visible = true;
 	label6->Visible = true;
 	label7->Visible = true;
 
-	if (gra != nullptr) {
-		gra->setGraRozpoczeta();
+	if (game != nullptr) {
+		game->setGameStarted();
 		Computer->Invalidate();
 		Person->Invalidate();
 	}
-
-
 }
-private: System::Void zasady_button_Click(System::Object^ sender, System::EventArgs^ e) 
+private: System::Void rules_button_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	Zasady^ zasady = gcnew Zasady();
-	zasady->Show();
+	Rules^ rules = gcnew Rules();
+	rules->Show();
 }
-private: System::Void strzal_Click(System::Object^ sender, System::EventArgs^ e)
+private: System::Void shot_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 	try {
 		int row, col;
-		// Konwersja tekstu na liczby ca³kowite
 		if (Int32::TryParse(y->Text, row) && Int32::TryParse(x->Text, col)) {
-			// SprawdŸ, czy liczby s¹ w zakresie 0-9
 			if (row >= 0 && row <= 9 && col >= 0 && col <= 9) {
 				
-				if (gra->ComputerStrzal(row, col)) {
-					if (!gra->ComputerZatopienie()) {
-						MessageBox::Show("Trafiony! + 4pkt");
-						gra->setWynik(4);
+				if (game->ComputerShot(row, col)) {
+					if (!game->ComputerFlooding()) {
+						MessageBox::Show("Sunk! + 4 points");
+						game->setScore(4);
 					}
 					else {
-						MessageBox::Show("Zatopiony!");
+						MessageBox::Show("Sunk!");
 					}
 
 				}
 				else {
-					MessageBox::Show("Pudlo! -0.2pkt");
-					gra->setWynik(-0.2);
+					MessageBox::Show("Miss! -0.2 points");
+					game->setScore(-0.2);
 				}
 
 
-				if (gra->getComputerLoose()) {
-					MessageBox::Show("Wygrales! Koniec gry");
-					Wyniki^ wyniki = gcnew Wyniki(gra->getWynik());
-					wyniki->Show();
+				if (game->getComputerLoose()) {
+					MessageBox::Show("You won!");
+					Scores^ scores = gcnew Scores(game->getScore());
+					scores->Show();
 
 
 				}
@@ -478,23 +448,23 @@ private: System::Void strzal_Click(System::Object^ sender, System::EventArgs^ e)
 					int roww = 0;
 					int koll = 0;
 
-					if (gra->PersonStrzal(roww, koll)) {
-						if (!gra->PersonZatopienie()) {
-							MessageBox::Show("Komputer trafil w Twoj statek! - 0.5pkt");
-							gra->setWynik(-0.5);
+					if (game->PersonShot(roww, koll)) {
+						if (!game->PersonFlooding()) {
+							MessageBox::Show("The computer hit your ship! - 0.5 points.");
+							game->setScore(-0.5);
 						}
 						else {
-							MessageBox::Show("Twoj statek zostal zatopiony!");
+							MessageBox::Show("Your ship has been sunk!");
 						}
 
 					}
 					else {
-						MessageBox::Show("Nie trafil w Twoj statek!");
+						MessageBox::Show("The computer missed your ship!");
 					}
-					if (gra->getPersonLoose()) {
-						MessageBox::Show("Przegrales! Koniec gry");
-						Wyniki^ wyniki = gcnew Wyniki(gra->getWynik());
-						wyniki->Show();
+					if (game->getPersonLoose()) {
+						MessageBox::Show("You lost! Game over.");
+						Scores^ scores = gcnew Scores(game->getScore());
+						scores->Show();
 					}
 
 				}
@@ -504,18 +474,18 @@ private: System::Void strzal_Click(System::Object^ sender, System::EventArgs^ e)
 
 			}
 			else {
-				MessageBox::Show("Podane liczby musz¹ byæ z zakresu 0-9.");
+				MessageBox::Show("The numbers must be in the range of 0-9.");
 			}
 		}
 		else {
-			MessageBox::Show("Podaj poprawne liczby ca³kowite.");
+			MessageBox::Show("Please enter valid integers.");
 		}
 	}
 	catch (System::OverflowException^) {
-		MessageBox::Show("Podane liczby s¹ zbyt du¿e!");
+		MessageBox::Show("The numbers are too large!");
 	}
 	catch (System::FormatException^) {
-		MessageBox::Show("Podaj poprawne liczby ca³kowite.");
+		MessageBox::Show("Please enter valid integers.");
 	}
 
 }

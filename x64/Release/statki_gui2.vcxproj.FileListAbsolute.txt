@@ -1,6 +1,6 @@
 C:\Users\emilk\Desktop\Informatyka\BattleShip\x64\Release\statki_gui2.vcxproj.AssemblyReference.cache
 C:\Users\emilk\Desktop\Informatyka\BattleShip\x64\Release\statki_gui2.Form1.resources
-C:\Users\emilk\Desktop\Informatyka\BattleShip\x64\Release\statki_gui2.Wyniki.resources
-C:\Users\emilk\Desktop\Informatyka\BattleShip\x64\Release\statki_gui2.Zasady.resources
 C:\Users\emilk\Desktop\Informatyka\BattleShip\x64\Release\statki_gui2.vcxproj.GenerateResource.cache
 C:\Users\emilk\Desktop\Informatyka\BattleShip\x64\Release\statki_gui2.exe
+C:\Users\emilk\Desktop\Informatyka\BattleShip\x64\Release\statki_gui2.Rules.resources
+C:\Users\emilk\Desktop\Informatyka\BattleShip\x64\Release\statki_gui2.Scores.resources

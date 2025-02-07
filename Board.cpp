@@ -7,7 +7,6 @@
 #include "Triple.h"
 #include "Quadruple.h"
 
-//using namespace std;
 
 Board::Board()
 {
@@ -16,7 +15,6 @@ Board::Board()
 			tab[i][j] = '.';
 		}
 	}
-
 	ships.push_back(new Single());
 	ships.push_back(new Single());
 	ships.push_back(new Single());
@@ -30,8 +28,6 @@ Board::Board()
 	ships.push_back(new Triple());
 
 	ships.push_back(new Quadruple());
-
-
 }
 
 Board::~Board()
@@ -55,12 +51,12 @@ bool Board::checkCoordinates(int row, int col, int p, Ship& shipp)
 	return false;
 }
 
-bool Board::strzal(int row, int col)
+bool Board::shot(int row, int col)
 {
 	return false;
 }
 
-bool Board::zatopienie()
+bool Board::flooding()
 {
 	return false;
 }

@@ -10,12 +10,10 @@
 #include <time.h> 
 #include <random>
 
-
 using namespace std;
 
 Person::Person() : Board()
 {}
-
 Person::~Person()
 {
 }
@@ -23,7 +21,7 @@ Person::~Person()
 bool Person::checkCoordinates(int row, int col, int p, Ship& shipp)
 {
 	if (row < 0 || row >= 10 || col < 0 || col >= 10) {
-		cout << "Podano zly indeks!" << endl;
+		cout << "Wrong index entered!" << endl;
 		return false;
 	}
 	if (tab[row][col] != 'z' && tab[row][col] != 'O') {
@@ -31,11 +29,11 @@ bool Person::checkCoordinates(int row, int col, int p, Ship& shipp)
 			for (int i = 1; i < shipp.getSize(); i++) {
 				++row;
 				if (row >= 10) {
-					cout << "Statek wykracza poza obszar planszy!" << endl;
+					cout << "The ship goes beyond the board area!" << endl;
 					return false;
 				}
 				if (tab[row][col] == 'z' || tab[row][col] == 'O') {
-					cout << "W tym miejscu jest juz staek!" << endl;
+					cout << "There is already a ship here!" << endl;
 					return false;
 				}
 			}
@@ -44,11 +42,11 @@ bool Person::checkCoordinates(int row, int col, int p, Ship& shipp)
 			for (int i = 1; i < shipp.getSize(); i++) {
 				++col;
 				if (col >= 10) {
-					cout << "Statek wykracza poza obszar planszy!" << endl;
+					cout << "The ship goes beyond the board area!" << endl;
 					return false;
 				}
 				if (tab[row][col] == 'z' || tab[row][col] == 'O') {
-					cout << "W tym miejscu jest juz staek!" << endl;
+					cout << "There is already a ship here!" << endl;
 					return false;
 				}
 			}
@@ -60,7 +58,7 @@ bool Person::checkCoordinates(int row, int col, int p, Ship& shipp)
 	return true;
 }
 
-bool Person::strzal(int row, int col)
+bool Person::shot(int row, int col)
 {
 	srand(static_cast<unsigned int>(time(NULL)));
 	row = rand() % 10 + 0;
@@ -85,13 +83,13 @@ bool Person::strzal(int row, int col)
 	return false;
 }
 
-bool Person::zatopienie()
+bool Person::flooding()
 {
 	for (Ship* ship : ships) {
 
-		if (!ship->getZatopiony()) {
+		if (!ship->getSunk()) {
 			if (ship->isSunk()) {
-				ship->setZatopiony();
+				ship->setSunk();
 				for (int i = 0; i < ship->getSize(); i++) {
 					tab[ship->getX(i)][ship->getY(i)] = 'X';
 				}
@@ -162,7 +160,7 @@ void Person::setTab(int row, int col, char value)
 		tab[row][col] = value;
 	}
 	else {
-		//Nic nie rob
+		//Nth
 	}
 }
 

@@ -4,8 +4,8 @@
 //using namespace std;
 
 /**
- * @brief - przechowuje dane o graczu w int albo double
- * @tparam T1 - zapis int/double wyniku 
+ * @brief - It stores player data as int or double
+ * @tparam T1 - Saving the result as int/double.
 */
 template <typename T1>
 class PlayerData
@@ -17,7 +17,7 @@ public:
 	PlayerData();
 
 	friend std::ostream& operator<<(std::ostream& os, PlayerData<T1>& player) {
-		os << player.playerName << " Twoj wynik to: " << player.score;
+		os << player.playerName << " Your score is: " << player.score;
 		return os;
 	}
 
