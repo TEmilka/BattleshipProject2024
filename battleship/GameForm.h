@@ -3,7 +3,9 @@
 #include "PlayerData.h"
 
 using namespace System::Windows::Forms;
-
+/**
+* 
+**/
 ref class GameForm : public Form
 {
 private:
@@ -22,24 +24,26 @@ public:
     GameForm();
     ~GameForm();
 
-    void setScore(double value);
-    double getScore();
-    char getTabComputer(int row, int col);
-    char getTabPerson(int row, int col);
-    void setComputerShip();
-    void setPersonShip();
+    void setScore(double value); 
+    double getScore(); 
 
-    bool ComputerShot(int row, int col);
-    bool PersonShot(int row, int col);
+    char getTabComputer(int row, int col); 
+    char getTabPerson(int row, int col); 
 
-    bool ComputerFlooding();
-    bool PersonFlooding();
+    void setComputerShip(); 
+    void setPersonShip(); 
 
-    void setGameStarted();
-    bool getGameStarted();
+    bool ComputerShot(int row, int col); 
+    bool PersonShot(int row, int col); 
 
-    bool getComputerLoose();
-    bool getPersonLoose();
+    bool ComputerFlooding(); 
+    bool PersonFlooding(); 
+
+    void setGameStartedTrue(); 
+    bool getGameStarted(); 
+
+    bool getComputerLoose(); 
+    bool getPersonLoose(); 
 
 };
 

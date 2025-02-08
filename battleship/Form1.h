@@ -12,14 +12,12 @@
 using namespace statki_gui2;
 
 namespace CppCLRWinFormsProject {
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
 
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
@@ -37,11 +35,8 @@ namespace CppCLRWinFormsProject {
 				this->MaximizeBox = false;
 				this->MinimizeBox = false;
 			}
-
-
 			game->setComputerShip();
 			game->setPersonShip();
-
 		}
 
 	protected:
@@ -53,33 +48,22 @@ namespace CppCLRWinFormsProject {
 				delete components;
 			}
 		}
-
-	private: System::Windows::Forms::Panel^ Computer;
-	private: System::Windows::Forms::Panel^ Person;
-	private: System::Windows::Forms::Label^ start;
-	private: System::Windows::Forms::Button^ rules_button;
-	private: System::Windows::Forms::Button^ start_button;
-
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
-	private:GameForm^ game = nullptr;
-	private: System::Windows::Forms::TextBox^ x;
-	private: System::Windows::Forms::TextBox^ y;
-	private: System::Windows::Forms::Button^ shot;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::Label^ label7;
-
-	protected:
-
-	protected:
-
-
-	private:
+	private: 
+		System::Windows::Forms::Panel^ Computer;
+		System::Windows::Forms::Panel^ Person;
+	    System::Windows::Forms::Label^ start;
+	    System::Windows::Forms::Button^ rules_button;
+		System::Windows::Forms::Button^ start_button;
+		System::Windows::Forms::Label^ label1;
+		System::Windows::Forms::Label^ label2;
+		GameForm^ game = nullptr;
+		System::Windows::Forms::Label^ label3;
+		System::Windows::Forms::Label^ label4;
+		System::Windows::Forms::Label^ label5;
+		System::Windows::Forms::Label^ label6;
+		System::Windows::Forms::Label^ label7;
+		System::Windows::Forms::Label^ label_score;
 		System::ComponentModel::Container^ components;
-	private:
 		array<System::String^>^ commandLineArgs;
 
 #pragma region Windows Form Designer generated code
@@ -92,14 +76,12 @@ namespace CppCLRWinFormsProject {
 			this->start_button = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->x = (gcnew System::Windows::Forms::TextBox());
-			this->y = (gcnew System::Windows::Forms::TextBox());
-			this->shot = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label_score = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// Computer
@@ -109,6 +91,7 @@ namespace CppCLRWinFormsProject {
 			this->Computer->Size = System::Drawing::Size(350, 350);
 			this->Computer->TabIndex = 0;
 			this->Computer->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::Computer_Paint);
+			this->Computer->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &Form1::Computer_MouseClick);
 			// 
 			// Person
 			// 
@@ -123,11 +106,13 @@ namespace CppCLRWinFormsProject {
 			this->start->AutoSize = true;
 			this->start->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->start->Location = System::Drawing::Point(324, 65);
+			this->start->Location = System::Drawing::Point(355, 65);
 			this->start->Name = L"start";
-			this->start->Size = System::Drawing::Size(333, 88);
+			this->start->Size = System::Drawing::Size(310, 88);
 			this->start->TabIndex = 2;
 			this->start->Text = L"BATTLESHIP\r\n\r\nTo open the game rules, click RULES\r\nTo start game, click START";
+			this->start->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->start->Click += gcnew System::EventHandler(this, &Form1::start_Click);
 			// 
 			// rules_button
 			// 
@@ -162,7 +147,7 @@ namespace CppCLRWinFormsProject {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(684, 190);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(156, 19);
+			this->label1->Size = System::Drawing::Size(128, 19);
 			this->label1->TabIndex = 6;
 			this->label1->Text = L"YOUR BOARD";
 			this->label1->Visible = false;
@@ -174,41 +159,10 @@ namespace CppCLRWinFormsProject {
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(143, 190);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(207, 19);
+			this->label2->Size = System::Drawing::Size(175, 19);
 			this->label2->TabIndex = 7;
 			this->label2->Text = L"COMPUTER BOARD";
 			this->label2->Visible = false;
-			// 
-			// x
-			// 
-			this->x->Location = System::Drawing::Point(369, 156);
-			this->x->Name = L"x";
-			this->x->Size = System::Drawing::Size(100, 20);
-			this->x->TabIndex = 8;
-			this->x->Text = L"X";
-			this->x->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->x->Visible = false;
-			// 
-			// y
-			// 
-			this->y->Location = System::Drawing::Point(493, 156);
-			this->y->Name = L"y";
-			this->y->Size = System::Drawing::Size(100, 20);
-			this->y->TabIndex = 9;
-			this->y->Text = L"Y";
-			this->y->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->y->Visible = false;
-			// 
-			// shot
-			// 
-			this->shot->Location = System::Drawing::Point(444, 182);
-			this->shot->Name = L"shot";
-			this->shot->Size = System::Drawing::Size(75, 23);
-			this->shot->TabIndex = 10;
-			this->shot->Text = L"SHOOT";
-			this->shot->UseVisualStyleBackColor = true;
-			this->shot->Visible = false;
-			this->shot->Click += gcnew System::EventHandler(this, &Form1::shot_Click);
 			// 
 			// label3
 			// 
@@ -263,10 +217,21 @@ namespace CppCLRWinFormsProject {
 				static_cast<System::Byte>(238)));
 			this->label7->Location = System::Drawing::Point(350, 65);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(274, 31);
+			this->label7->Size = System::Drawing::Size(315, 31);
 			this->label7->TabIndex = 15;
 			this->label7->Text = L"TIME FOR THE SHOTS!";
 			this->label7->Visible = false;
+			// 
+			// label_score
+			// 
+			this->label_score->AutoSize = true;
+			this->label_score->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label_score->Location = System::Drawing::Point(20, 20);
+			this->label_score->Name = L"label_score";
+			this->label_score->Size = System::Drawing::Size(83, 20);
+			this->label_score->TabIndex = 16;
+			this->label_score->Text = L"Punkty: 0";
 			// 
 			// Form1
 			// 
@@ -275,14 +240,12 @@ namespace CppCLRWinFormsProject {
 			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(1008, 729);
+			this->Controls->Add(this->label_score);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->shot);
-			this->Controls->Add(this->y);
-			this->Controls->Add(this->x);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->start_button);
@@ -291,13 +254,13 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->Person);
 			this->Controls->Add(this->Computer);
 			this->Name = L"Form1";
-			this->Text = L"BATTLESHIP";
+			this->Text = L" ";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void Computer_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
+private: System::Void Computer_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
 	{
 		if (game->getGameStarted()) {
 
@@ -314,12 +277,12 @@ namespace CppCLRWinFormsProject {
 
 					g->DrawRectangle(Pens::Black, x, y, cellSize, cellSize);
 
-					if (game->getTabComputer(i, j) == 'O')
-					{
-						SolidBrush^ brush = gcnew SolidBrush(Color::Blue); 
-						g->FillRectangle(brush, x, y, cellSize, cellSize);
-					}
-					else if (game->getTabComputer(i, j) == 'T')
+					//if (game->getTabComputer(i, j) == 'O')
+					//{
+					//	SolidBrush^ brush = gcnew SolidBrush(Color::Blue); 
+					//	g->FillRectangle(brush, x, y, cellSize, cellSize);
+					//}
+					if (game->getTabComputer(i, j) == 'T')
 					{
 						SolidBrush^ brush = gcnew SolidBrush(Color::Orange); 
 						g->FillRectangle(brush, x, y, cellSize, cellSize);
@@ -339,16 +302,13 @@ namespace CppCLRWinFormsProject {
 			}
 		}
 	}
-
 private: System::Void Person_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
 {
 	if (game->getGameStarted()) {
-
 		Graphics^ g = e->Graphics;
 
 		int boardSize = 10;
 		int cellSize = 30;
-
 
 		for (int i = 0; i < boardSize; i++)
 		{
@@ -384,19 +344,14 @@ private: System::Void Person_Paint(System::Object^ sender, System::Windows::Form
 		}
 	}
 }
-
 private: System::Void start_button_Click(System::Object^ sender, System::EventArgs^ e) 
 {
 	rules_button->Visible = false;
 	start_button->Visible = false;
-	start->Visible = false;
-
-
+	//start->Visible = false;
+	this->start->Text = L"\n\nRight - click on the square where you want to shoot.";
 	label1->Visible = true;
 	label2->Visible = true;
-	x->Visible = true;
-	y->Visible = true;
-	shot->Visible = true;
 	label3->Visible = true;
 	label4->Visible = true;
 	label5->Visible = true;
@@ -404,7 +359,7 @@ private: System::Void start_button_Click(System::Object^ sender, System::EventAr
 	label7->Visible = true;
 
 	if (game != nullptr) {
-		game->setGameStarted();
+		game->setGameStartedTrue();
 		Computer->Invalidate();
 		Person->Invalidate();
 	}
@@ -414,81 +369,68 @@ private: System::Void rules_button_Click(System::Object^ sender, System::EventAr
 	Rules^ rules = gcnew Rules();
 	rules->Show();
 }
-private: System::Void shot_Click(System::Object^ sender, System::EventArgs^ e)
+private: System::Void Computer_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
+{
+	if (game->getGameStarted())
 	{
-	try {
-		int row, col;
-		if (Int32::TryParse(y->Text, row) && Int32::TryParse(x->Text, col)) {
-			if (row >= 0 && row <= 9 && col >= 0 && col <= 9) {
-				
-				if (game->ComputerShot(row, col)) {
-					if (!game->ComputerFlooding()) {
-						MessageBox::Show("Sunk! + 4 points");
-						game->setScore(4);
-					}
-					else {
-						MessageBox::Show("Sunk!");
-					}
+		int cellSize = 30;
+		int boardSize = 10;
 
+		int i = e->X / cellSize;
+		int j = e->Y / cellSize;
+
+		if (i >= 0 && i < boardSize && j >= 0 && j < boardSize)
+		{
+			if (game->ComputerShot(i, j)) {
+				if (!game->ComputerFlooding()) {
+					MessageBox::Show("Hit! + 4 points");
+					game->setScore(4);
 				}
-				else {
-					MessageBox::Show("Miss! -0.2 points");
-					game->setScore(-0.2);
+				else{
+					MessageBox::Show("Sunk! + 4 points");
+					game->setScore(4);
 				}
+			}
+			else{
+				MessageBox::Show("Miss! -0.2 points");
+				game->setScore(-0.2);
+			}
+			label_score->Text = L"Punkty: " + game->getScore();
 
-
-				if (game->getComputerLoose()) {
-					MessageBox::Show("You won!");
-					Scores^ scores = gcnew Scores(game->getScore());
-					scores->Show();
-
-
-				}
-				else {
-					int roww = 0;
-					int koll = 0;
-
-					if (game->PersonShot(roww, koll)) {
-						if (!game->PersonFlooding()) {
-							MessageBox::Show("The computer hit your ship! - 0.5 points.");
-							game->setScore(-0.5);
-						}
-						else {
-							MessageBox::Show("Your ship has been sunk!");
-						}
-
-					}
-					else {
-						MessageBox::Show("The computer missed your ship!");
-					}
-					if (game->getPersonLoose()) {
-						MessageBox::Show("You lost! Game over.");
-						Scores^ scores = gcnew Scores(game->getScore());
-						scores->Show();
-					}
-
-				}
-				Computer->Invalidate();
-				Person->Invalidate();
-
-
+			if (game->getComputerLoose()) {
+				MessageBox::Show("You won!");
+				Scores^ scores = gcnew Scores(game->getScore());
+				scores->Show();
 			}
 			else {
-				MessageBox::Show("The numbers must be in the range of 0-9.");
+				int roww = 0;
+				int koll = 0;
+
+				if (game->PersonShot(roww, koll)) {
+					if (!game->PersonFlooding()) {
+						MessageBox::Show("The computer hit your ship! - 0.5 points.");
+						game->setScore(-0.5);
+					}
+					else {
+						MessageBox::Show("Your ship has been sunk!");
+					}
+				}
+				else {
+					MessageBox::Show("The computer missed your ship!");
+				}
+				label_score->Text = L"Punkty: " + game->getScore();
+				if (game->getPersonLoose()) {
+					MessageBox::Show("You lost! Game over.");
+					Scores^ scores = gcnew Scores(game->getScore());
+					scores->Show();
+				}
 			}
+			Computer->Invalidate();
+			Person->Invalidate();
 		}
-		else {
-			MessageBox::Show("Please enter valid integers.");
-		}
 	}
-	catch (System::OverflowException^) {
-		MessageBox::Show("The numbers are too large!");
-	}
-	catch (System::FormatException^) {
-		MessageBox::Show("Please enter valid integers.");
-	}
-
 }
-
+private: System::Void start_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

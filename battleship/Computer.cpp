@@ -17,7 +17,7 @@ Computer::~Computer()
 {}
 
 bool Computer::checkCoordinates(int row, int col, int p, Ship& shipp)
-{
+ {
     if (tab[row][col] != 'z' && tab[row][col] != 'O') {
         if (p == 1) {
             for (int i = 1; i < shipp.getSize(); i++) {
@@ -25,8 +25,7 @@ bool Computer::checkCoordinates(int row, int col, int p, Ship& shipp)
                 if (row >= 10) {
                     return false;
                 }
-
-                if (tab[row][col] == 'z' || tab[row][col] == 'O') {
+                if (isOccupied(row, col)) {
                     return false;
                 }
             }
@@ -40,7 +39,7 @@ bool Computer::checkCoordinates(int row, int col, int p, Ship& shipp)
                 if (col >= 10) {
                     return false;
                 }
-                if (tab[row][col] == 'z' || tab[row][col] == 'O') {
+                if (isOccupied(row, col)) {
                     return false;
                 }
             }
@@ -150,11 +149,7 @@ void Computer::setTab(int row, int col, char value)
     if (tab[row][col] != 'X' && tab[row][col] != 'T') {
         tab[row][col] = value;
     }
-    else {
-        //Nth
-    }
 }
-
 char Computer::getTab(int row, int col)
 {
     return tab[row][col];

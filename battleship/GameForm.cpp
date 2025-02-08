@@ -14,7 +14,6 @@ GameForm::GameForm()
     score = 0;
     gameStarted = false;
 }
-
 GameForm::~GameForm()
 {
     delete computer;
@@ -27,7 +26,6 @@ void GameForm::setScore(double value)
 {
     score += value;
 }
-
 double GameForm::getScore()
 {
     return score;
@@ -37,7 +35,6 @@ char GameForm::getTabComputer(int row, int col)
 {
     return computer->getTab(row, col);
 }
-
 char GameForm::getTabPerson(int row, int col)
 {
     return person->getTab(row,col);
@@ -47,7 +44,6 @@ void GameForm::setComputerShip()
 {
     computer->placeShips();
 }
-
 void GameForm::setPersonShip()
 {
     person->placeShips();
@@ -57,7 +53,6 @@ bool GameForm::ComputerShot(int row, int col)
 {
    return computer->shot(row,col);
 }
-
 bool GameForm::PersonShot(int row, int col)
 {
     return person->shot(row,col);
@@ -67,17 +62,15 @@ bool GameForm::ComputerFlooding()
 {
     return computer->flooding();
 }
-
 bool GameForm::PersonFlooding()
 {
   return person->flooding();
 }
 
-void GameForm::setGameStarted()
+void GameForm::setGameStartedTrue()
 {
     gameStarted = true;
 }
-
 bool GameForm::getGameStarted()
 {
     return gameStarted;
@@ -87,7 +80,6 @@ bool GameForm::getComputerLoose()
 {
     return computer->isLoose();
 }
-
 bool GameForm::getPersonLoose()
 {
     return person->isLoose();

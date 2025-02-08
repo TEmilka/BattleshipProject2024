@@ -15,15 +15,18 @@ using namespace std;
 Person::Person() : Board()
 {}
 Person::~Person()
-{
-}
-
+{}
 bool Person::checkCoordinates(int row, int col, int p, Ship& shipp)
 {
 	if (row < 0 || row >= 10 || col < 0 || col >= 10) {
 		cout << "Wrong index entered!" << endl;
 		return false;
 	}
+	if (isOccupied(row, col)) {
+		cout << "There is already a ship here!" << endl;
+		return false;
+	}
+
 	if (tab[row][col] != 'z' && tab[row][col] != 'O') {
 		if (p == 1) {
 			for (int i = 1; i < shipp.getSize(); i++) {
@@ -32,7 +35,7 @@ bool Person::checkCoordinates(int row, int col, int p, Ship& shipp)
 					cout << "The ship goes beyond the board area!" << endl;
 					return false;
 				}
-				if (tab[row][col] == 'z' || tab[row][col] == 'O') {
+				if (isOccupied(row, col)) {
 					cout << "There is already a ship here!" << endl;
 					return false;
 				}
@@ -45,7 +48,7 @@ bool Person::checkCoordinates(int row, int col, int p, Ship& shipp)
 					cout << "The ship goes beyond the board area!" << endl;
 					return false;
 				}
-				if (tab[row][col] == 'z' || tab[row][col] == 'O') {
+				if (isOccupied(row, col)) {
 					cout << "There is already a ship here!" << endl;
 					return false;
 				}
@@ -57,7 +60,6 @@ bool Person::checkCoordinates(int row, int col, int p, Ship& shipp)
 	}
 	return true;
 }
-
 bool Person::shot(int row, int col)
 {
 	srand(static_cast<unsigned int>(time(NULL)));
@@ -82,7 +84,6 @@ bool Person::shot(int row, int col)
 	}
 	return false;
 }
-
 bool Person::flooding()
 {
 	for (Ship* ship : ships) {
@@ -100,7 +101,6 @@ bool Person::flooding()
 	}
 	return false;
 }
-
 bool Person::isLoose()
 {
 	for (int i = 0; i < 10; i++) {
@@ -112,7 +112,6 @@ bool Person::isLoose()
 	}
 	return true;
 }
-
 void Person::placeShips()
 {
 	int row = 0;
@@ -151,9 +150,7 @@ void Person::placeShips()
 			}
 		}
 	}
-
 }
-
 void Person::setTab(int row, int col, char value)
 {
 	if (tab[row][col] != 'X' && tab[row][col] != 'T') {
@@ -163,7 +160,6 @@ void Person::setTab(int row, int col, char value)
 		//Nth
 	}
 }
-
 char Person::getTab(int row, int col)
 {
 	return tab[row][col];

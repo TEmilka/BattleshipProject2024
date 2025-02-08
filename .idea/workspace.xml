@@ -18,7 +18,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4512b85-b685-4fe5-96a3-e11ae6101b3f" name="Changes" comment="" />
+    <list default="true" id="e4512b85-b685-4fe5-96a3-e11ae6101b3f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/battleship/.vs/statki_gui2/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/battleship/.vs/statki_gui2/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/battleship/.vs/statki_gui2/v17/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/battleship/.vs/statki_gui2/v17/Browse.VC.db" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,9 +33,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2siQkqTKFpaoUsitKDAFUEWjqIn" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
@@ -42,12 +45,13 @@
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/emilk/Desktop/Informatyka/statki_gui2",
+    "last_opened_file_path": "C:/Users/emilk/Desktop/Informatyka/BattleShip",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -65,6 +69,7 @@
       <option name="presentableId" value="Default" />
       <updated>1738936060421</updated>
       <workItem from="1738936061571" duration="1527000" />
+      <workItem from="1739003253859" duration="99000" />
     </task>
     <servers />
   </component>

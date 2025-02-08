@@ -8,11 +8,12 @@
         ~Computer();
 
         bool checkCoordinates(int row, int col, int p, Ship& shipp);
-        bool shot(int row, int col);
-        bool flooding();
-        bool isLoose();
+        bool shot(int row, int col); 
+        bool flooding(); 
+        bool isLoose(); 
         void placeShips();
+
         void setTab(int row, int col, char value);
-        char getTab(int row, int col);
+        char getTab(int row, int col); 
         
     };

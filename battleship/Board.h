@@ -13,7 +13,6 @@ public:
 
 	virtual char getTab(int row, int col);
 	virtual void setTab(int row, int col, char value);
-	virtual bool checkCoordinates(int row, int col, int p, Ship& shipp);
 	/**
 	 * @brief - checking the correctness of the shot
 	 * @param row 
@@ -27,6 +26,8 @@ public:
 
 	virtual void placeShips();
 	virtual void printBoard();
+
+	bool isOccupied(int row, int col);
 
 };
 

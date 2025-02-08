@@ -41,34 +41,27 @@ char Board::getTab(int row, int col)
 {
 	return 0;
 }
-
 void Board::setTab(int row, int col, char value)
 {
 }
-
-bool Board::checkCoordinates(int row, int col, int p, Ship& shipp)
-{
-	return false;
-}
-
 bool Board::shot(int row, int col)
 {
 	return false;
 }
-
 bool Board::flooding()
 {
 	return false;
 }
-
 bool Board::isLoose()
 {
 	return false;
 }
-
 void Board::placeShips()
 {}
-
 void Board::printBoard()
 {}
+bool Board::isOccupied(int row, int col)
+{
+	return (tab[row][col] == 'z' || tab[row][col] == 'O');
+}
 

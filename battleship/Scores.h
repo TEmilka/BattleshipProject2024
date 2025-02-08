@@ -236,7 +236,7 @@ private: System::Void accept_choice_Click(System::Object^ sender, System::EventA
 					int wynikInt;
 					while (plikInt.read(reinterpret_cast<char*>(&wynikInt), sizeof(wynikInt))) {
 
-						score_table->Text = "Score Table: (INT)" + wynikInt;
+						score_table->Text = "Score Table: (INT) \n" + wynikInt;
 					}
 
 					plikInt.close();
@@ -263,7 +263,7 @@ private: System::Void accept_choice_Click(System::Object^ sender, System::EventA
 				if (plikDouble.is_open()) {
 					double wynikDouble;
 					while (plikDouble.read(reinterpret_cast<char*>(&wynikDouble), sizeof(wynikDouble))) {
-						score_table->Text = "Score Table: (DOUBLE)" + wynikDouble;
+						score_table->Text = "Score Table: (DOUBLE)  \n" + wynikDouble;
 					}
 
 					plikDouble.close();
